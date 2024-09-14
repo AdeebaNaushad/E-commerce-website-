@@ -1,0 +1,6 @@
+1. Run command in ur cmd  npm create vite@latest your-project-name-here -- --template react
+2. move to the folder then run npm install
+3. to see your site on browser run npm run dev
+4. now do npm install axios to install axios library to get help in api call
+5. now do npm install react-router-dom to get router features in ur application
+6. then to integrate chakra ui run command npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
