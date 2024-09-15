@@ -10,9 +10,9 @@ import { BrowserRouter as Router, Route, Routes, useParams, useNavigate } from "
 
 function App() {
   const { products, setProducts } = useContext(ProductContext);
-
+  const VITE_Api_url = "https://my-shop-database-2bc98-default-rtdb.firebaseio.com/"
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_Api_url}products.json`).then((response) => {
+    axios.get(`${VITE_Api_url}products.json`).then((response) => {
       const data = response.data;
 
       // If data is an object, convert it into an array

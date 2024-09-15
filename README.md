@@ -36,13 +36,13 @@ To contribute to or modify this project, please fork the repository and clone yo
    ```bash
    git clone https://github.com/AdeebaNaushad/E-commerce-website-.git
 
+3. **Navigate to the Project Directory:**
+   ```bash
+   cd E-commerce-website-
 
-    cd E-commerce-website-
+4. **Install Dependencies:**
+   ```bash
+   npm install
+5. **Start the Development Server:**
 
-    npm install
-
-    npm run dev
-
-
-
-The application will be available at http://localhost:5173
+   
