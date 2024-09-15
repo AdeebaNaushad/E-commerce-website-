@@ -1,35 +1,66 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useContext, useEffect } from 'react';
+import axios from 'axios';
+import { ProductContext } from "./main";
+import { Grid, Box } from "@chakra-ui/react";
+import Navbar from './Components/Navbar';
+import Footer from './Components/Footer';
+import SingleProductCard from './Components/SingleProductCard';
+import Product from './Components/Product';
+import { BrowserRouter as Router, Route, Routes, useParams, useNavigate } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { products, setProducts } = useContext(ProductContext);
+
+  useEffect(() => {
+    axios.get(`${import.meta.env.VITE_Api_url}products.json`).then((response) => {
+      const data = response.data;
+
+      // If data is an object, convert it into an array
+      const productsArray = data ? Object.values(data) : [];
+
+      setProducts(productsArray);
+    });
+  }, [setProducts]);
+
+  const ProductRoute = () => {
+    const { id } = useParams();
+    const product = products.find(product => product.id === parseInt(id));
+    return product ? <Product product={product} /> : <p>Product not found</p>;
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Router>
+      <Navbar />
+      <Box
+        maxW="1320px"
+        mx="auto"
+        px="4"
+        mt="10"
+      >
+        <Grid
+          templateColumns={{
+            base: "repeat(1, 1fr)",
+            sm: "repeat(2, 1fr)",
+            md: "repeat(3, 1fr)",
+            lg: "repeat(4, 1fr)",
+          }}
+          gap="6"
+        >
+          {products && products.length > 0 ? (
+            products.map((product) => (
+              <SingleProductCard key={product.id} product={product} />
+            ))
+          ) : (
+            <p>No products available</p>
+          )}
+        </Grid>
+        <Routes>
+          <Route path="/product/:id" element={<ProductRoute />} />
+        </Routes>
+      </Box>
+      <Footer />
+    </Router>
+  );
 }
 
-export default App
+export default App;
