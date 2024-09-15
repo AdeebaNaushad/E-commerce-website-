@@ -44,5 +44,8 @@ To contribute to or modify this project, please fork the repository and clone yo
    ```bash
    npm install
 5. **Start the Development Server:**
+    ```bash
+   npm run dev
+The application will be available at <code>http://localhost:5173</code>.   
 
    
