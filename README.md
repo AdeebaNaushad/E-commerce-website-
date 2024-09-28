@@ -22,6 +22,18 @@ This project is an e-commerce website currently under development. It provides a
 
 This project is still under development. Current features are functional, but further enhancements and features are planned.
 
+
+### Preview
+
+<img src='src/assets/1.png'/>
+
+
+
+<img src='src/assets/image.png'/>
+
+
+
+
 ## Getting Started
 
 To contribute to or modify this project, please fork the repository and clone your fork to your local machine.
@@ -47,5 +59,6 @@ To contribute to or modify this project, please fork the repository and clone yo
     ```bash
    npm run dev
 The application will be available at <code>http://localhost:5173</code>.   
+
 
    
